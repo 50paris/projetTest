@@ -1,0 +1,17 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+<div class="example-wrapper">
+    <ol>
+        {%for key,value in app.session.get('todo') %}
+            <li>
+                <h3> {{key}}</h3>
+                {{value}}
+            </li>
+        {%endfor%}
+    </ol>
+</div>
+
+{% endblock %}
+
+{% block pageTitle %}Hello TodoController!{% endblock %}

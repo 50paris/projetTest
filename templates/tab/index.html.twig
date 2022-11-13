@@ -1,0 +1,20 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}TabController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <table>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+   NbNote :{{notes | length}}<br/>
+   Min :{{min(notes)}}<br/>
+    Max :{{max(notes)}}
+
+</div>
+{% endblock %}

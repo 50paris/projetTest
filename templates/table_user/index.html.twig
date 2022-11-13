@@ -1,0 +1,33 @@
+{% extends 'template.html.twig' %}
+
+{% block pageTitle %}Hello TableUserController!{% endblock %}
+
+{% block body %}
+    {{ include('fragments/date.jour.html.twig') }}
+
+    <div class="alert alert-warning">
+        <a href="{{ url('app_tab',{ 'nb':10}) }}">User Notes</a>
+    </div>
+<table  class="table-light table container table-bordered">
+    <thead class="table-light">
+        <th scope="col">Prenom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Age</th>
+        <th scope="col">Msg</th>
+    </thead>
+    </tbody>
+        {% for user in tableUser %}
+            <tr class="table-{% if loop.index is even %}warning {% else %}danger{% endif %}">
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ render(controller('App\\Controller\\HomeController::sayHello', {
+                    'name':user.nom,
+                    'firstName':user.prenom
+                })) }}</td>
+            </tr>
+        {% endfor %}
+        <tr><td>{{ parent() }}</td></tr>
+    </tbody>
+</table>
+{% endblock %}
